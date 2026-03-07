@@ -36,3 +36,12 @@ SELECT AVG(rollno) FROM student;
 #GROUP BY CLAUSE
 SELECT city, COUNT(*) FROM student GROUP BY city;
 SELECT city, AVG(rollno) FROM student GROUP BY city;
+
+
+#HAVING CLAUSE 
+USE college;
+SELECT * FROM student;
+select city,count(name)
+FROM student
+GROUP BY city
+HAVING max(marks)>90;
