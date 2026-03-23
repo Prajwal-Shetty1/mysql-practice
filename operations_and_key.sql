@@ -50,6 +50,7 @@ CREATE TABLE teacher(
    ON UPDATE CASCADE
    ON DELETE CASCADE
 );
+
 INSERT INTO teacher
 VALUES
 (100,"Prajju",1),
