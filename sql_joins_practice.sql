@@ -51,3 +51,49 @@ SELECT *
 FROM student
 RIGHT JOIN course
 ON student.student_id=course.student_id;
+
+
+#LEFT EXCLUSIVE JOIN-Returns records from left table only (no match in right)
+SELECT * 
+FROM student
+LEFT JOIN course
+ON student.student_id=course.student_id
+WHERE course.student_id IS NULL;
+
+#RIGHT EXCLUSIVE JOIN-Returns records from right tableonly(no match in left)
+SELECT *
+FROM student
+RIGHT JOIN course
+ON student.student_id=course.student_id
+WHERE student.student_id IS NULL;
+
+#SELF JOIN-It is a regular join but the table is joined with itself
+CREATE TABLE employee(
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  manager_id INT
+);
+INSERT INTO employee(id,name,manager_id)
+VALUES
+(101,"adam",103),
+(102,"bob",104),
+(103,"casey",NULL),
+(104,"donald",103);
+SELECT * FROM employee;
+
+SELECT *
+FROM employee as a
+JOIN employee as b
+ON a.id=b.manager_id;
+
+SELECT a.name as manager_name,b.name
+FROM employee as a
+JOIN employee as b
+ON a.id=b.manager_id; 
+
+#UNION-it is used to combine results of of two or more select statement,gives unique records
+SELECT *
+FROM course
+UNION
+SELECT *
+FROM student;
